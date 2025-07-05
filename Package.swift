@@ -17,7 +17,7 @@ let package = Package(
             targets: ["LoggingOSLog"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/shaps80/Logging.git", from: "1.0.0"),
+        .package(url: "https://github.com/shaps80/Logging.git", from: "1.8.0"),
     ],
     targets: [
         .target(

@@ -4,21 +4,30 @@ import struct Logging.Logger
 import os
 
 public struct LoggingOSLog: LogHandler {
+    
     public var logLevel: Logger.Level = .info
     public let label: String
     private let oslogger: OSLog
     
-    public init(label: String) {
+    public init(label: String, logLevel: Logger.Level = .debug) {
         self.label = label
-        self.oslogger = OSLog(subsystem: label, category: "")
-    }
-
-    public init(label: String, log: OSLog) {
-        self.label = label
-        self.oslogger = log
+        self.oslogger = OSLog(subsystem: Bundle.main.bundleIdentifier ?? "LoggingOSLog", category: label)
+        self.logLevel = logLevel
     }
     
-    public func log(level: Logger.Level, message: Logger.Message, metadata: Logger.Metadata?, file: String, function: String, line: UInt) {
+    public init(subsystem: String = Bundle.main.bundleIdentifier ?? "LoggingOSLog", category: String, logLevel: Logger.Level = .debug) {
+        self.label = "\(subsystem).\(category)"
+        self.oslogger = OSLog(subsystem: label, category: label)
+        self.logLevel = logLevel
+    }
+
+    public init(label: String, log: OSLog, logLevel: Logger.Level = .debug) {
+        self.label = label
+        self.oslogger = log
+        self.logLevel = logLevel
+    }
+    
+    public func log(level: Logger.Level, message: Logger.Message, metadata: Logger.Metadata?, source: String, file: String, function: String, line: UInt) {
         var combinedPrettyMetadata = self.prettyMetadata
         if let metadataOverride = metadata, !metadataOverride.isEmpty {
             combinedPrettyMetadata = self.prettify(
