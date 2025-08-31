@@ -13,7 +13,7 @@ https://github.com/idolize/swift-log-oslog.git
 And use `1.0.0` as the base version. If adding as a dependency in your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/idolize/swift-log-oslog.git", .from("0.2.1"))
+.package(url: "https://github.com/idolize/swift-log-oslog.git", .from("1.0.0"))
 ```
 
 ## Usage
