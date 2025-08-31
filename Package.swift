@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version: 6.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,25 +6,28 @@ import PackageDescription
 let package = Package(
     name: "LoggingOSLog",
     platforms: [
-        .iOS(.v13),
-        .tvOS(.v13),
-        .macOS(.v10_15),
+        .iOS(.v14),
+        .tvOS(.v14),
+        .macOS(.v11),
         .watchOS(.v6),
     ],
     products: [
         .library(
             name: "LoggingOSLog",
-            targets: ["LoggingOSLog"]),
+            targets: ["LoggingOSLog"]
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/shaps80/Logging.git", from: "1.8.0"),
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.6.3")
     ],
     targets: [
         .target(
             name: "LoggingOSLog",
             dependencies: [
-                "Logging"
+                .product(name: "Logging", package: "swift-log")
             ]
         )
-    ]
+    ],
+
+    swiftLanguageModes: [.v5]
 )

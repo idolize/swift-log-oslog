@@ -1,19 +1,19 @@
 # LoggingOSLog
 
-[OSLog](https://developer.apple.com/documentation/os/oslog) logging backend for [swift-log](https://github.com/apple/swift-log).
+[OSLog](https://developer.apple.com/documentation/os/logger) logging backend for [swift-log](https://github.com/apple/swift-log).
 
 ## Getting Started
 
 If you're adding through Xcode's Swift Package Manager integration (Xcode 11 and higher), you can simply use:
 
 ```
-https://github.com/chrisaljoudi/swift-log-oslog.git
+https://github.com/idolize/swift-log-oslog.git
 ```
 
-And use `0.2.1` as the base version. If adding as a dependency in your `Package.swift`:
+And use `1.0.0` as the base version. If adding as a dependency in your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/chrisaljoudi/swift-log-oslog.git", .from("0.2.1"))
+.package(url: "https://github.com/idolize/swift-log-oslog.git", .from("0.2.1"))
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ LoggingSystem.bootstrap(LoggingOSLog.init)
 Then use `swift-log` [per usual](https://github.com/apple/swift-log#lets-log), for example:
 
 ```swift
-let logger = Logger(label: "com.yourcompany.yourawesomeapp")
+let logger = Logger(label: "network")
 
 /// ...
 
